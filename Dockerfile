@@ -32,7 +32,7 @@ RUN apk update && apk add nginx
 RUN rm -rf /usr/share/nginx/html/* 
 
 # Копіюємо файли додатку у каталог Nginx 
-COPY --from=runtime /app /usr/share/nginx/html 
+COPY --from=mcr.microsoft.com/dotnet/aspnet:6.0 /app /usr/share/nginx/htmll 
 
 # Видаляємо попередню конфігурацію Nginx 
 RUN rm -f /etc/nginx/http.d/default.conf 
