@@ -37,7 +37,7 @@ pipeline {
                     -Dsonar.projectKey=dotnetwebapp \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login= sqp_cf05c205d2247bef692734895146322df500c25d
+                    -Dsonar.login=sqp_cf05c205d2247bef692734895146322df500c25d
                 """
             }
         }
