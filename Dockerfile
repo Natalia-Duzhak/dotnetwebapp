@@ -22,17 +22,3 @@ COPY --from=build-env /app/out .
 # Запускаємо додаток
 ENTRYPOINT ["dotnet", "dotnetwebapp.dll", "--urls", "http://*:5000"] 
 
-# Використовуємо офіційний образ Alpine Linux для Nginx 
-FROM alpine:latest AS nginx 
-
-# Оновлюємо індекс пакетів і встановлюємо Nginx 
-RUN apk update && apk add nginx 
-
-# Видаляємо стандартну сторінку Nginx 
-RUN rm -rf /usr/share/nginx/html/* 
-
-# Копіюємо файли додатку у каталог Nginx 
-COPY --from=mcr.microsoft.com/dotnet/aspnet:6.0 /app /usr/share/nginx/html 
-
-# Видаляємо попередню конфігурацію Nginx 
-RUN rm -f /etc/nginx/http.d/default.conf 
